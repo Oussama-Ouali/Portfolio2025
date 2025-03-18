@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -48,8 +48,12 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <NavLink to="/" className="text-xl font-bold text-gradient">
+          <NavLink 
+            to="/" 
+            className="text-xl font-bold font-playfair text-gradient relative group"
+          >
             Oussama Ouali
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-sky-400 transition-all duration-300 group-hover:w-full"></span>
           </NavLink>
 
           {/* Desktop Navigation */}
@@ -59,13 +63,13 @@ export default function Navbar() {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) =>
-                  `nav-link ${isActive ? "active" : ""}`
+                  `nav-link font-poppins text-sm font-medium ${isActive ? "active" : ""}`
                 }
               >
                 {link.name}
               </NavLink>
             ))}
-            <Button size="sm" className="ml-4 gap-2">
+            <Button size="sm" className="ml-4 gap-2 bg-gradient-to-r from-purple-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 font-poppins">
               <Download size={16} />
               Resume
             </Button>
@@ -73,7 +77,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-foreground hover:text-sky-500 transition-colors focus:outline-none"
+            className="md:hidden text-foreground hover:text-purple-400 transition-colors focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -98,17 +102,18 @@ export default function Navbar() {
                   key={link.name}
                   to={link.path}
                   className={({ isActive }) =>
-                    `py-2 px-4 rounded-md transition-colors ${
+                    `py-2 px-4 rounded-md transition-colors font-poppins flex items-center justify-between ${
                       isActive
-                        ? "bg-sky-500/10 text-sky-500"
-                        : "text-foreground hover:bg-sky-500/5 hover:text-sky-500"
+                        ? "bg-purple-500/10 text-purple-400"
+                        : "text-foreground hover:bg-purple-500/5 hover:text-purple-400"
                     }`
                   }
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  <ChevronRight size={16} className="opacity-70" />
                 </NavLink>
               ))}
-              <Button size="sm" className="w-full gap-2 mt-2">
+              <Button size="sm" className="w-full gap-2 mt-2 bg-gradient-to-r from-purple-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 font-poppins">
                 <Download size={16} />
                 Resume
               </Button>

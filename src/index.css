@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,8 +45,12 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    @apply bg-background text-foreground antialiased overflow-x-hidden font-poppins;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
   }
 
   html {
@@ -52,21 +58,21 @@
   }
 
   ::selection {
-    @apply bg-sky-500/30 text-white;
+    @apply bg-purple-500/30 text-white;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply relative backdrop-blur-xl bg-white/5 border border-white/10 shadow-md hover:shadow-sky-500/10 transition-all duration-300;
+    @apply relative backdrop-blur-xl bg-white/5 border border-white/10 shadow-md hover:shadow-purple-500/10 transition-all duration-300;
   }
   
   .neo-blur {
-    @apply relative backdrop-blur-xl bg-black/40 border border-white/10 hover:border-sky-500/30 transition-all duration-300;
+    @apply relative backdrop-blur-xl bg-black/40 border border-white/10 hover:border-purple-500/30 transition-all duration-300;
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-sky-400 via-sky-500 to-blue-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-purple-400 via-sky-500 to-blue-600 bg-clip-text text-transparent;
   }
   
   .section-container {
@@ -74,19 +80,19 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-6 inline-block;
+    @apply text-3xl md:text-4xl font-bold mb-6 inline-block font-playfair;
   }
   
   .section-subtitle {
-    @apply text-xl text-muted-foreground mb-12 max-w-2xl;
+    @apply text-xl text-muted-foreground mb-12 max-w-2xl font-poppins;
   }
 
   .nav-link {
-    @apply relative text-sm font-medium text-muted-foreground hover:text-sky-500 transition-colors duration-200 ease-in-out;
+    @apply relative text-sm font-medium text-muted-foreground hover:text-purple-400 transition-colors duration-200 ease-in-out;
   }
 
   .nav-link::after {
-    @apply content-[''] absolute w-0 h-0.5 bg-sky-500 left-0 -bottom-1 transition-all duration-200;
+    @apply content-[''] absolute w-0 h-0.5 bg-gradient-to-r from-purple-400 to-sky-400 left-0 -bottom-1 transition-all duration-200;
   }
 
   .nav-link:hover::after {
@@ -94,7 +100,7 @@
   }
 
   .nav-link.active {
-    @apply text-sky-500;
+    @apply text-purple-400;
   }
 
   .nav-link.active::after {
