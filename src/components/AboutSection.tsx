@@ -1,15 +1,16 @@
-
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
 import { 
+  Code, 
   Globe, 
-  Monitor, 
-  Server, 
   Database, 
-  Paintbrush,
-  Github,
-  Docker,
-  Code
+  GitBranch, 
+  Layers, 
+  Cloud, 
+  Smartphone,
+  Boxes,
+  GitFork, 
+  ServerIcon
 } from "lucide-react";
 import SkillBar, { SkillCircle } from "./SkillBar";
 
@@ -40,7 +41,7 @@ export default function AboutSection() {
     },
     { 
       title: "Backend Development",
-      icon: <Server size={24} className="text-sky-500" />,
+      icon: <ServerIcon size={24} className="text-sky-500" />,
       skills: ["Node.js", "Express.js", "Laravel", "Spring Boot", "API Development"]
     },
     { 
