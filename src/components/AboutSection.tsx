@@ -13,7 +13,7 @@ import {
   GitFork, 
   ServerIcon,
   Monitor,
-  PaintBrush,
+  Paintbrush,
   GithubIcon,
   Ship
 } from "lucide-react";
@@ -56,7 +56,7 @@ export default function AboutSection() {
     },
     { 
       title: "Design & Prototyping",
-      icon: <PaintBrush size={24} className="text-sky-500" />,
+      icon: <Paintbrush size={24} className="text-sky-500" />,
       skills: ["Figma", "Adobe XD", "UI/UX Design", "Wireframing", "Selenium"]
     },
     { 
