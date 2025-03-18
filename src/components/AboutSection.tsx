@@ -1,3 +1,4 @@
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
 import { 
@@ -10,7 +11,11 @@ import {
   Smartphone,
   Boxes,
   GitFork, 
-  ServerIcon
+  ServerIcon,
+  Monitor,
+  PaintBrush,
+  GithubIcon,
+  Ship
 } from "lucide-react";
 import SkillBar, { SkillCircle } from "./SkillBar";
 
@@ -51,17 +56,17 @@ export default function AboutSection() {
     },
     { 
       title: "Design & Prototyping",
-      icon: <Paintbrush size={24} className="text-sky-500" />,
+      icon: <PaintBrush size={24} className="text-sky-500" />,
       skills: ["Figma", "Adobe XD", "UI/UX Design", "Wireframing", "Selenium"]
     },
     { 
       title: "DevOps & Version Control",
-      icon: <Docker size={24} className="text-sky-500" />,
+      icon: <Ship size={24} className="text-sky-500" />,
       skills: ["Docker", "CI/CD", "GitHub Actions", "GitLab CI", "Kubernetes"]
     },
     { 
       title: "Version Control",
-      icon: <Github size={24} className="text-sky-500" />,
+      icon: <GithubIcon size={24} className="text-sky-500" />,
       skills: ["Git", "GitHub", "GitLab", "Bitbucket", "Agile Methodologies"]
     },
     { 
