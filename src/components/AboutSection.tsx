@@ -2,13 +2,13 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
 import { 
-  Browser, 
+  Globe, 
   Monitor, 
   Server, 
   Database, 
   Paintbrush
 } from "lucide-react";
-import { SkillBar, SkillCircle } from "./SkillBar";
+import SkillBar, { SkillCircle } from "./SkillBar";
 
 export default function AboutSection() {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.1 });
@@ -25,7 +25,7 @@ export default function AboutSection() {
   const specializations = [
     { 
       title: "Frontend Development",
-      icon: <Browser size={24} className="text-sky-500" />,
+      icon: <Globe size={24} className="text-sky-500" />,
       skills: ["HTML", "CSS", "JavaScript", "React.js", "Angular", "Tailwind CSS"]
     },
     { 
