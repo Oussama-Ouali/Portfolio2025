@@ -6,7 +6,10 @@ import {
   Monitor, 
   Server, 
   Database, 
-  Paintbrush
+  Paintbrush,
+  Github,
+  Docker,
+  Code
 } from "lucide-react";
 import SkillBar, { SkillCircle } from "./SkillBar";
 
@@ -14,12 +17,14 @@ export default function AboutSection() {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.1 });
 
   const technicalSkills = [
-    { skill: "Ionic / Angular", percentage: 95 },
     { skill: "React / React Native", percentage: 90 },
     { skill: "JavaScript / TypeScript", percentage: 92 },
+    { skill: "Ionic / Angular", percentage: 60 },
     { skill: "Node.js", percentage: 85 },
     { skill: "PostgreSQL / Firebase", percentage: 80 },
-    { skill: "Docker / CI/CD", percentage: 75 }
+    { skill: "Docker / CI/CD", percentage: 75 },
+    { skill: "Git / GitHub", percentage: 88 },
+    { skill: "Redux / Context API", percentage: 82 }
   ];
 
   const specializations = [
@@ -47,11 +52,30 @@ export default function AboutSection() {
       title: "Design & Prototyping",
       icon: <Paintbrush size={24} className="text-sky-500" />,
       skills: ["Figma", "Adobe XD", "UI/UX Design", "Wireframing", "Selenium"]
+    },
+    { 
+      title: "DevOps & Version Control",
+      icon: <Docker size={24} className="text-sky-500" />,
+      skills: ["Docker", "CI/CD", "GitHub Actions", "GitLab CI", "Kubernetes"]
+    },
+    { 
+      title: "Version Control",
+      icon: <Github size={24} className="text-sky-500" />,
+      skills: ["Git", "GitHub", "GitLab", "Bitbucket", "Agile Methodologies"]
+    },
+    { 
+      title: "State Management",
+      icon: <Code size={24} className="text-sky-500" />,
+      skills: ["Redux", "Context API", "MobX", "Zustand", "Recoil"]
     }
   ];
 
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="py-20 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-sky-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-sky-500/5 rounded-full blur-3xl"></div>
+      
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref as React.RefObject<HTMLDivElement>}
@@ -78,14 +102,14 @@ export default function AboutSection() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-semibold mb-4">My Journey</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gradient">My Journey</h3>
               <div className="space-y-4 text-muted-foreground">
                 <p>
                   With experience in cross-platform mobile applications and web development, I thrive on solving complex problems 
                   and creating user-friendly solutions.
                 </p>
                 <p>
-                  Currently, I am focusing on developing advanced mobile applications using Ionic, Angular, and React Native, 
+                  Currently, I am focusing on developing advanced mobile applications using React Native and React, 
                   with a strong emphasis on performance optimization and responsive design.
                 </p>
                 <p>
@@ -99,13 +123,13 @@ export default function AboutSection() {
                 </p>
               </div>
               
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Education</h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-gradient">Education</h3>
               <div className="space-y-4">
-                <div className="neo-blur p-4 rounded-lg">
+                <div className="neo-blur p-4 rounded-lg hover:border-sky-500/50 transition-all duration-300">
                   <h4 className="font-medium text-sky-500">Bachelor's degree in Computer Science</h4>
                   <p className="text-muted-foreground">Faculty of Science and Technology | 2018 - 2022</p>
                 </div>
-                <div className="neo-blur p-4 rounded-lg">
+                <div className="neo-blur p-4 rounded-lg hover:border-sky-500/50 transition-all duration-300">
                   <h4 className="font-medium text-sky-500">AI & Data Science Program</h4>
                   <p className="text-muted-foreground">Certificate in Data Science | 2023 - August 2024</p>
                 </div>
@@ -120,7 +144,7 @@ export default function AboutSection() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <h3 className="text-2xl font-semibold mb-6">Technical Skills</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-gradient">Technical Skills</h3>
               <div className="mb-8">
                 {technicalSkills.map((skill, index) => (
                   <SkillBar 
@@ -131,10 +155,18 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              <h3 className="text-2xl font-semibold mb-6">Specializations</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <h3 className="text-2xl font-semibold mb-6 text-gradient">Specializations</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {specializations.map((spec, index) => (
-                  <div key={index} className="glass-card p-4 rounded-lg">
+                  <motion.div 
+                    key={index} 
+                    className="glass-card p-5 rounded-lg border border-white/5 hover:border-sky-500/20"
+                    whileHover={{ 
+                      scale: 1.03, 
+                      boxShadow: "0 10px 30px -15px rgba(56, 189, 248, 0.2)" 
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <div className="flex items-center mb-3">
                       {spec.icon}
                       <h4 className="ml-2 font-medium">{spec.title}</h4>
@@ -147,11 +179,11 @@ export default function AboutSection() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-6">Languages</h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-6 text-gradient">Languages</h3>
               <div className="flex flex-wrap justify-center">
                 <SkillCircle 
                   skill="Arabic" 
