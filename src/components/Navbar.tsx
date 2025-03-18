@@ -18,7 +18,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Handle scroll effect
+  // Handle scroll effect for styling only, not visibility
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -41,7 +41,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md py-2 shadow-md"
+          ? "bg-background/90 backdrop-blur-md py-2 shadow-md"
           : "bg-transparent py-4"
       }`}
     >

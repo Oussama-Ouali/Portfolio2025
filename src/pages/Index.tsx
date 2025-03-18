@@ -15,7 +15,7 @@ const Index = () => {
         <meta name="description" content="Oussama Ouali is a Mobile Application Developer and Frontend Developer with expertise in React Native, React, Angular, and more." />
       </Helmet>
       <div className="relative overflow-hidden">
-        {/* Background elements */}
+        {/* Background gradient */}
         <div className="absolute top-0 inset-x-0 h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/20 via-background to-background -z-10" />
         
         {/* Enhanced animated blurred blobs */}

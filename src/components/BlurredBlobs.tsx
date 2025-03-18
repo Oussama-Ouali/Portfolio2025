@@ -14,18 +14,27 @@ interface BlobProps {
   delay?: number;
   duration?: number;
   reverse?: boolean;
+  intensity?: number;
 }
 
-const Blob = ({ color, size, position, delay = 0, duration = 20, reverse = false }: BlobProps) => {
+const Blob = ({ 
+  color, 
+  size, 
+  position, 
+  delay = 0, 
+  duration = 20, 
+  reverse = false,
+  intensity = 1 
+}: BlobProps) => {
   return (
     <motion.div
-      className="absolute rounded-full blur-3xl"
+      className="absolute rounded-full"
       style={{
         background: color,
         width: size,
         height: size,
         ...position,
-        filter: "blur(120px)",
+        filter: `blur(${120 * intensity}px)`,
       }}
       initial={{ scale: 0.8, opacity: 0.2 }}
       animate={{ 
@@ -51,62 +60,82 @@ export default function BlurredBlobs() {
     offset: ["start start", "end end"]
   });
   
-  const y1 = useTransform(scrollYProgress, [0, 0.5, 1], [0, -150, -300]);
-  const y2 = useTransform(scrollYProgress, [0, 0.5, 1], [0, 200, 400]);
-  const y3 = useTransform(scrollYProgress, [0, 0.5, 1], [0, -100, -200]);
+  // Enhanced scroll transformations
+  const y1 = useTransform(scrollYProgress, [0, 0.5, 1], [0, -200, -400]);
+  const y2 = useTransform(scrollYProgress, [0, 0.5, 1], [0, 250, 500]);
+  const y3 = useTransform(scrollYProgress, [0, 0.5, 1], [0, -150, -300]);
+  const y4 = useTransform(scrollYProgress, [0, 0.5, 1], [0, 300, 600]);
+  
   const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 360]);
   const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -360]);
   const rotate3 = useTransform(scrollYProgress, [0, 1], [180, -180]);
+  const rotate4 = useTransform(scrollYProgress, [0, 1], [-90, 270]);
+  
   const scale1 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.5, 1]);
   const scale2 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 1.2]);
   const scale3 = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.2, 0.9]);
+  const scale4 = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.3, 0.8]);
+  
   const opacity1 = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.5, 0.2]);
   const opacity2 = useTransform(scrollYProgress, [0, 0.5, 1], [0.4, 0.2, 0.5]);
+  const opacity3 = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.6, 0.4]);
   
   return (
     <AnimatePresence>
       <div ref={containerRef} className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        {/* Static animated blobs */}
+        {/* Static animated blobs with enhanced effects */}
         <Blob 
-          color="rgba(56, 189, 248, 0.5)" 
+          color="linear-gradient(135deg, rgba(56, 189, 248, 0.6) 0%, rgba(14, 165, 233, 0.4) 100%)" 
+          size={800} 
+          position={{ top: "-25%", left: "-20%" }} 
+          duration={36}
+          intensity={1.2}
+        />
+        <Blob 
+          color="linear-gradient(135deg, rgba(14, 165, 233, 0.5) 0%, rgba(2, 132, 199, 0.3) 100%)" 
           size={700} 
-          position={{ top: "-20%", left: "-15%" }} 
-          duration={28}
-        />
-        <Blob 
-          color="rgba(14, 165, 233, 0.4)" 
-          size={600} 
-          position={{ bottom: "-25%", right: "-10%" }}
-          delay={3}
-          duration={32}
-          reverse={true}
-        />
-        <Blob 
-          color="rgba(124, 58, 237, 0.35)" 
-          size={550} 
-          position={{ top: "35%", right: "5%" }}
+          position={{ bottom: "-30%", right: "-15%" }}
           delay={5}
-          duration={26}
+          duration={40}
+          reverse={true}
+          intensity={1.3}
         />
         <Blob 
-          color="rgba(139, 92, 246, 0.3)" 
-          size={450} 
-          position={{ bottom: "15%", left: "10%" }}
-          delay={7}
-          duration={30}
+          color="linear-gradient(135deg, rgba(124, 58, 237, 0.45) 0%, rgba(139, 92, 246, 0.25) 100%)" 
+          size={650} 
+          position={{ top: "30%", right: "0%" }}
+          delay={8}
+          duration={38}
+          intensity={1.1}
+        />
+        <Blob 
+          color="linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(124, 58, 237, 0.2) 100%)" 
+          size={550} 
+          position={{ bottom: "10%", left: "5%" }}
+          delay={12}
+          duration={42}
           reverse={true}
+          intensity={1.25}
+        />
+        <Blob 
+          color="linear-gradient(135deg, rgba(2, 132, 199, 0.35) 0%, rgba(56, 189, 248, 0.15) 100%)" 
+          size={500} 
+          position={{ top: "15%", left: "40%" }}
+          delay={15}
+          duration={44}
+          intensity={1.15}
         />
         
-        {/* Scroll animated blobs */}
+        {/* Scroll animated blobs with enhanced effects */}
         <motion.div
-          className="absolute rounded-full blur-3xl"
+          className="absolute rounded-full"
           style={{
-            background: "linear-gradient(135deg, rgba(56, 189, 248, 0.5) 0%, rgba(14, 165, 233, 0.3) 100%)",
-            width: 350,
-            height: 350,
-            top: "25%",
+            background: "linear-gradient(135deg, rgba(56, 189, 248, 0.6) 0%, rgba(14, 165, 233, 0.3) 100%)",
+            width: 400,
+            height: 400,
+            top: "20%",
             left: "15%",
-            filter: "blur(100px)",
+            filter: "blur(120px)",
             y: y1,
             rotate: rotate1,
             scale: scale1,
@@ -114,14 +143,14 @@ export default function BlurredBlobs() {
           }}
         />
         <motion.div
-          className="absolute rounded-full blur-3xl"
+          className="absolute rounded-full"
           style={{
-            background: "linear-gradient(135deg, rgba(124, 58, 237, 0.4) 0%, rgba(139, 92, 246, 0.2) 100%)",
-            width: 450,
-            height: 450,
+            background: "linear-gradient(135deg, rgba(124, 58, 237, 0.5) 0%, rgba(139, 92, 246, 0.25) 100%)",
+            width: 500,
+            height: 500,
             bottom: "15%",
-            right: "20%",
-            filter: "blur(120px)",
+            right: "15%",
+            filter: "blur(140px)",
             y: y2,
             rotate: rotate2,
             scale: scale2,
@@ -129,18 +158,33 @@ export default function BlurredBlobs() {
           }}
         />
         <motion.div
-          className="absolute rounded-full blur-3xl"
+          className="absolute rounded-full"
           style={{
-            background: "linear-gradient(135deg, rgba(56, 189, 248, 0.3) 0%, rgba(124, 58, 237, 0.2) 100%)",
-            width: 300,
-            height: 300,
-            top: "60%",
-            left: "40%",
-            filter: "blur(90px)",
+            background: "linear-gradient(135deg, rgba(56, 189, 248, 0.4) 0%, rgba(124, 58, 237, 0.2) 100%)",
+            width: 350,
+            height: 350,
+            top: "55%",
+            left: "35%",
+            filter: "blur(110px)",
             y: y3,
             rotate: rotate3,
             scale: scale3,
-            opacity: 0.3,
+            opacity: opacity3,
+          }}
+        />
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            background: "linear-gradient(135deg, rgba(2, 132, 199, 0.45) 0%, rgba(56, 189, 248, 0.2) 100%)",
+            width: 380,
+            height: 380,
+            top: "10%",
+            right: "30%",
+            filter: "blur(130px)",
+            y: y4,
+            rotate: rotate4,
+            scale: scale4,
+            opacity: 0.35,
           }}
         />
       </div>
