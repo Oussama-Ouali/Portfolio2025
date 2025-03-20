@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import ProjectCard from "@/components/ProjectCard";
 import { motion } from "framer-motion";
+import {Sparkles} from "lucide-react"
 
 const Projects = () => {
   const projects = [
@@ -12,7 +13,7 @@ const Projects = () => {
       title: "GMAO-SIG Mobile App",
       description: "Mobile app for asset maintenance tracking at Tanger Med using Ionic, React Native, and AWS EC2.",
       image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      technologies: ["Ionic", "React Native", "AWS EC2"],
+      technologies: ["Ionic", "React Native", "AWS EC2", "OpenLayers" ],
       githubUrl: "#",
       demoUrl: "#"
     },
@@ -43,8 +44,8 @@ const Projects = () => {
     {
       title: "Warehouse Material Unloading App",
       description: "New project for managing truck unloading and material separation with real-time updates.",
-      image: "https://images.unsplash.com/photo-1566232392379-afd9a0db8fe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-      technologies: ["React Native", "Node.js", "PostgreSQL"],
+      image: "https://plus.unsplash.com/premium_photo-1682146487085-456de01b8633?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      technologies: ["React Native", "expo", "Node.js", "PostgreSQL", "Elixir", "webSocket" , "phinex"],
       githubUrl: "#",
       demoUrl: "#"
     },
@@ -73,9 +74,10 @@ const Projects = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-sky-500/10 text-sky-500 text-sm font-medium mb-3">
+            <motion.span className="inline-block py-1.5 px-4 rounded-full bg-sky-500/10 text-sky-400 text-sm font-medium mb-4 border border-sky-500/20 shadow-sm shadow-sky-500/5">
+            <Sparkles size={14} className="inline mr-2" />
               My Work
-            </span>
+            </motion.span>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               A showcase of my recent development work, including mobile applications, web development,

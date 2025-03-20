@@ -18,7 +18,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Handle scroll effect for styling only, not visibility
+ 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {

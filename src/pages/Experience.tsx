@@ -5,9 +5,21 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import { motion } from "framer-motion";
+import {Sparkles} from "lucide-react"
 
 const Experience = () => {
   const experiences = [
+    {
+      company: "Elixiria Tech",
+      position: "CTO",
+      period: "Augest 2024 - Present",
+      location: "Tanger, Morocco",
+      description: [
+        "Developed and maintained, a cross-platform mobile application (React Native) designed for Material Unloading and Separation in reel time.",
+        "Implemented new features and optimized app performance for scalability.",
+      ],
+      index: 0
+    },
     {
       company: "Tanger Med Engineering",
       position: "Mobile Application Developer",
@@ -34,14 +46,24 @@ const Experience = () => {
     },
     {
       company: "Club Hub Marketing",
-      position: "Mailer Agent and Automation Developer",
+      position: "Automation Developer",
       period: "March 2023 - January 2024",
-      location: "Remote",
+      location: "On site",
       description: [
         "Designed and implemented an automated bulk email system using Selenium, significantly improving DNS routing and delivery rates.",
         "Developed innovative solutions for monitoring and enhancing email campaign performance."
       ],
       index: 2
+    },
+    {
+      company: "Noximedia",
+      position: "Frontend developer",
+      period: "december 2022 - Mars 2024",
+      location: "Remote",
+      description: [
+        "Developing a food tracking system using react js and firebase."
+      ],
+      index: 3
     }
   ];
 
@@ -60,9 +82,10 @@ const Experience = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-sky-500/10 text-sky-500 text-sm font-medium mb-3">
+            <motion.span className="inline-block py-1.5 px-4 rounded-full bg-sky-500/10 text-sky-400 text-sm font-medium mb-4 border border-sky-500/20 shadow-sm shadow-sky-500/5">
+            <Sparkles size={14} className="inline mr-2" />
               My Journey
-            </span>
+            </motion.span>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Professional Experience</h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               A timeline of my career journey, showcasing my experience and growth as a developer.

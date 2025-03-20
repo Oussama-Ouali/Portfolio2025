@@ -7,6 +7,7 @@ import ContactForm from "@/components/ContactForm";
 import SocialLinks from "@/components/SocialLinks";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
+import {Sparkles} from "lucide-react"
 
 const Contact = () => {
   const contactInfo = [
@@ -19,8 +20,8 @@ const Contact = () => {
     {
       icon: <Phone className="text-sky-500" size={24} />,
       title: "Phone",
-      details: "+212 623393797",
-      link: "tel:+212623393797"
+      details: "+212605393797",
+      link: "tel:+212605393797"
     },
     {
       icon: <MapPin className="text-sky-500" size={24} />,
@@ -45,9 +46,10 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-sky-500/10 text-sky-500 text-sm font-medium mb-3">
+            <motion.span className="inline-block py-1.5 px-4 rounded-full bg-sky-500/10 text-sky-400 text-sm font-medium mb-4 border border-sky-500/20 shadow-sm shadow-sky-500/5">
+            <Sparkles size={14} className="inline mr-2" />
               Get In Touch
-            </span>
+            </motion.span>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Contact Me</h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Have a question or want to work together? Feel free to reach out!

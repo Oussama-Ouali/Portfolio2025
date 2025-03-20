@@ -1,8 +1,8 @@
-
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 interface ProjectCardProps {
   title: string;
@@ -23,78 +23,124 @@ export default function ProjectCard({
   demoUrl,
   index,
 }: ProjectCardProps) {
-  const { ref, isInView } = useScrollAnimation({ threshold: 0.1 });
-
+  const [isHovered, setIsHovered] = useState(false);
+  
   return (
     <motion.div
-      ref={ref as React.RefObject<HTMLDivElement>}
       initial={{ y: 50, opacity: 0 }}
-      animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
-      className="glass-card rounded-xl overflow-hidden group"
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ 
+        duration: 0.7, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100
+      }}
+      whileHover={{ 
+        y: -8,
+        transition: { duration: 0.3 }
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="bg-card/30 backdrop-blur-sm rounded-xl overflow-hidden border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
     >
       <div className="relative overflow-hidden aspect-video">
-        <div className="absolute inset-0 bg-black/30 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <div className="flex space-x-4">
-            {githubUrl && (
-              <Button
-                size="sm"
-                variant="secondary"
-                className="gap-2"
-                asChild
-              >
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10 flex items-end justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0.4 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="w-full p-4 flex justify-between items-center">
+            <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-md">
+              {title}
+            </h3>
+            
+            <div className="flex space-x-2">
+              {githubUrl && (
+                <Button
+                  size="icon"
+                  variant="secondary"
+                  className="h-9 w-9 rounded-full bg-black/20 backdrop-blur-md hover:bg-black/40"
+                  asChild
                 >
-                  <Github size={16} />
-                  Code
-                </a>
-              </Button>
-            )}
-            {demoUrl && (
-              <Button
-                size="sm"
-                className="gap-2"
-                asChild
-              >
-                <a
-                  href={demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Repository"
+                  >
+                    <Github size={18} className="text-white" />
+                  </a>
+                </Button>
+              )}
+              {demoUrl && (
+                <Button
+                  size="icon"
+                  className="h-9 w-9 rounded-full bg-sky-500/80 hover:bg-sky-600"
+                  asChild
                 >
-                  <ExternalLink size={16} />
-                  Demo
-                </a>
-              </Button>
-            )}
+                  <a
+                    href={demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Live Demo"
+                  >
+                    <ExternalLink size={18} className="text-white" />
+                  </a>
+                </Button>
+              )}
+            </div>
           </div>
-        </div>
-        <img
+        </motion.div>
+        
+        <motion.img
           src={image}
           alt={title}
-          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+          className="w-full h-full object-cover"
+          animate={{ 
+            scale: isHovered ? 1.08 : 1,
+            filter: isHovered ? "brightness(0.85)" : "brightness(1)"
+          }}
+          transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
         />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2 group-hover:text-sky-500 transition-colors">
-          {title}
-        </h3>
-        <p className="text-muted-foreground mb-4">{description}</p>
-        <div className="flex items-center gap-2 mb-4">
-          <Layers size={16} className="text-sky-500" />
-          <div className="flex flex-wrap gap-2">
-            {technologies.map((tech, i) => (
-              <span
-                key={i}
-                className="text-xs bg-secondary px-2 py-1 rounded"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+      
+      <div className="p-6 flex-grow flex flex-col">
+        <p className="text-muted-foreground mb-6 flex-grow">{description}</p>
+        
+        <div className="flex items-center gap-2 mb-2">
+          <Layers size={16} className="text-sky-500 shrink-0" />
+          <span className="text-sm font-medium text-sky-500">Tech Stack</span>
         </div>
+        
+        <motion.div 
+          className="flex flex-wrap gap-2"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.05,
+                delayChildren: 0.1 + index * 0.1
+              }
+            },
+            hidden: {}
+          }}
+        >
+          {technologies.map((tech, i) => (
+            <motion.div
+              key={i}
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <Badge variant="outline" className="bg-secondary/50 backdrop-blur-sm hover:bg-secondary">
+                {tech}
+              </Badge>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </motion.div>
   );
