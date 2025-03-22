@@ -31,32 +31,7 @@ export default function HeroSection() {
     return () => clearTimeout(timeout);
   }, [text, isTypingComplete]);
 
-  // Generate avatar instead of using an image
-  const AvatarComponent = () => (
-    <div className="relative w-full h-full">
-      {/* Base face shape */}
-      <div className="absolute inset-0 bg-sky-50 rounded-full"></div>
-      
-      {/* Stylized features - simplified for avatar */}
-      <div className="absolute left-1/4 right-1/4 top-1/4 h-1/12 bg-sky-900 rounded-full opacity-80"></div>
-      <div className="absolute left-1/3 top-1/3 w-1/12 h-1/12 bg-sky-900 rounded-full"></div>
-      <div className="absolute right-1/3 top-1/3 w-1/12 h-1/12 bg-sky-900 rounded-full"></div>
-      <div className="absolute left-2/5 right-2/5 top-1/2 h-1/6 bg-sky-900 rounded-full opacity-30"></div>
-      
-      {/* Hair */}
-      <div className="absolute top-0 left-1/12 right-1/12 h-1/3 bg-sky-900 rounded-t-full"></div>
-      
-      {/* Tech-themed elements */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
-          <circle cx="50" cy="50" r="45" fill="none" stroke="#0ea5e9" strokeWidth="0.5" />
-          <circle cx="50" cy="50" r="35" fill="none" stroke="#0ea5e9" strokeWidth="0.5" />
-          <line x1="20" y1="50" x2="80" y2="50" stroke="#0ea5e9" strokeWidth="0.5" />
-          <line x1="50" y1="20" x2="50" y2="80" stroke="#0ea5e9" strokeWidth="0.5" />
-        </svg>
-      </div>
-    </div>
-  );
+ 
 
   return (
     <section
@@ -139,7 +114,7 @@ export default function HeroSection() {
                 </h2>
                 
                 <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-                  A passionate developer with over 5 years of experience in cross-platform mobile applications 
+                  A passionate developer with over 2 years of experience in cross-platform mobile applications 
                   and modern web development, focused on creating exceptional user experiences and scalable solutions.
                 </p>
                 
@@ -181,7 +156,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            <div className="relative w-72 h-72 md:w-96 md:h-96">
+            <div className="relative w-72 h-72 md:w-[550px] md:h-[550px]">
               {/* Glowing background effect */}
               <motion.div 
                 className="absolute inset-0 rounded-full bg-sky-500/20 blur-3xl"
@@ -218,7 +193,7 @@ export default function HeroSection() {
                 }}
               >
                 {/* Avatar component instead of image */}
-                <AvatarComponent />
+                <img className="rounded-full" src="public\uploads\profile.jpg" alt="" />
                 
                 {/* Overlay gradient */}
                 <motion.div 
