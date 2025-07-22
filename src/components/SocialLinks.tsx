@@ -8,35 +8,35 @@ interface SocialLinksProps {
   animate?: boolean;
 }
 
-export default function SocialLinks({ 
-  className = "", 
+export default function SocialLinks({
+  className = "",
   iconSize = 20,
-  animate = false 
+  animate = false
 }: SocialLinksProps) {
   const socialLinks = [
-    { 
-      name: "GitHub", 
-      icon: <Github size={iconSize} />, 
+    {
+      name: "GitHub",
+      icon: <Github size={iconSize} />,
       url: "https://github.com/Oussama-Ouali",
-      color: "hover:text-sky-500" 
+      color: "hover:text-sky-500"
     },
-    { 
-      name: "LinkedIn", 
-      icon: <Linkedin size={iconSize} />, 
+    {
+      name: "LinkedIn",
+      icon: <Linkedin size={iconSize} />,
       url: "https://linkedin.com/in/Oussama-Ouali",
-      color: "hover:text-sky-500" 
+      color: "hover:text-sky-500"
     },
-    { 
-      name: "Email", 
-      icon: <Mail size={iconSize} />, 
-      url: "mailto:ouatiousssama034@gmail.com",
-      color: "hover:text-sky-500" 
+    {
+      name: "Email",
+      icon: <Mail size={iconSize} />,
+      url: "mailto:oualiousssama034@gmail.com",
+      color: "hover:text-sky-500"
     },
-    { 
-      name: "Twitter", 
-      icon: <Twitter size={iconSize} />, 
+    {
+      name: "Twitter",
+      icon: <Twitter size={iconSize} />,
       url: "#",
-      color: "hover:text-sky-500" 
+      color: "hover:text-sky-500"
     }
   ];
 
@@ -58,7 +58,7 @@ export default function SocialLinks({
 
   if (animate) {
     return (
-      <motion.div 
+      <motion.div
         className={`flex space-x-4 ${className}`}
         variants={container}
         initial="hidden"

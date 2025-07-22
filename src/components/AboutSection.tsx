@@ -51,7 +51,7 @@ export default function AboutSection() {
     { 
       title: "Backend Development",
       icon: <ServerIcon size={24} className="text-sky-400" />,
-      skills: ["Node.js", "Express.js", "Laravel", "Spring Boot", "API Development"]
+      skills: [ "Laravel", "Spring Boot", "API Development"]
     },
     { 
       title: "Database Management",
@@ -76,7 +76,7 @@ export default function AboutSection() {
     { 
       title: "State Management",
       icon: <Cpu size={24} className="text-sky-400" />,
-      skills: ["Redux", "Context API", "MobX", "Zustand", "Recoil"]
+      skills: ["Redux", "Context API"]
     }
   ];
 
@@ -179,7 +179,7 @@ export default function AboutSection() {
                   <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">Education</span>
                 </h3>
                 <div className="space-y-5">
-                  {/* <motion.div 
+                  <motion.div 
                     className="p-5 rounded-lg border border-sky-500/10 bg-sky-950/20 backdrop-blur-sm hover:border-sky-500/30 transition-all duration-300 shadow-lg shadow-sky-500/5"
                     whileHover={{ scale: 1.02, y: -5 }}
                   >
@@ -188,7 +188,7 @@ export default function AboutSection() {
                       <span className="w-3 h-3 bg-sky-400 rounded-full inline-block mr-2"></span>
                       Bielefeld University | 2024 - present
                     </p>
-                  </motion.div> */}
+                  </motion.div>
                   
                   <motion.div 
                     className="p-5 rounded-lg border border-sky-500/10 bg-sky-950/20 backdrop-blur-sm hover:border-sky-500/30 transition-all duration-300 shadow-lg shadow-sky-500/5"

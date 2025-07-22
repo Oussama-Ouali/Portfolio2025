@@ -7,15 +7,15 @@ import ContactForm from "@/components/ContactForm";
 import SocialLinks from "@/components/SocialLinks";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
-import {Sparkles} from "lucide-react"
+import { Sparkles } from "lucide-react"
 
 const Contact = () => {
   const contactInfo = [
     {
       icon: <Mail className="text-sky-500" size={24} />,
       title: "Email",
-      details: "ouatiousssama034@gmail.com",
-      link: "mailto:ouatiousssama034@gmail.com"
+      details: "oualiousssama034@gmail.com",
+      link: "mailto:oualiousssama034@gmail.com"
     },
     {
       icon: <Phone className="text-sky-500" size={24} />,
@@ -47,7 +47,7 @@ const Contact = () => {
             className="text-center mb-16"
           >
             <motion.span className="inline-block py-1.5 px-4 rounded-full bg-sky-500/10 text-sky-400 text-sm font-medium mb-4 border border-sky-500/20 shadow-sm shadow-sky-500/5">
-            <Sparkles size={14} className="inline mr-2" />
+              <Sparkles size={14} className="inline mr-2" />
               Get In Touch
             </motion.span>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Contact Me</h1>
@@ -72,8 +72,8 @@ const Contact = () => {
                       <div>
                         <h3 className="font-medium">{info.title}</h3>
                         {info.link ? (
-                          <a 
-                            href={info.link} 
+                          <a
+                            href={info.link}
                             className="text-muted-foreground hover:text-sky-500 transition-colors"
                           >
                             {info.details}
@@ -86,7 +86,7 @@ const Contact = () => {
                   ))}
                 </div>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -99,7 +99,7 @@ const Contact = () => {
                   </p>
                   <SocialLinks iconSize={24} />
                 </div>
-                
+
                 <div className="neo-blur p-6 rounded-xl">
                   <h3 className="text-xl font-medium mb-3">Looking for new opportunities</h3>
                   <p className="text-muted-foreground">
@@ -109,7 +109,7 @@ const Contact = () => {
                 </div>
               </motion.div>
             </div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
