@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Menu, X, Download, ChevronRight } from "lucide-react";
@@ -18,7 +17,6 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
- 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -37,19 +35,32 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   }, [location]);
 
+  // Handle resume download
+  const handleResumeDownload = () => {
+    // Option 1: Direct download from public folder
+    const link = document.createElement('a');
+    link.href = 'public/uploads/OussamaCVEnglish.pdf'; // Place your resume.pdf in the public folder
+    link.download = 'Oussama_Ouali_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Optional: Add analytics tracking
+    // gtag('event', 'download', { file_name: 'resume' });
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-md py-2 shadow-md"
-          : "bg-transparent py-4"
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/90 backdrop-blur-md py-2 shadow-md"
+        : "bg-transparent py-4"
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <NavLink 
-            to="/" 
+          <NavLink
+            to="/"
             className="text-xl font-bold font-playfair text-gradient relative group"
           >
             Oussama Ouali
@@ -69,7 +80,11 @@ export default function Navbar() {
                 {link.name}
               </NavLink>
             ))}
-            <Button size="sm" className="ml-4 gap-2 bg-gradient-to-r from-purple-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 font-poppins">
+            <Button
+              size="sm"
+              className="ml-4 gap-2 bg-gradient-to-r from-purple-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 font-poppins"
+              onClick={handleResumeDownload}
+            >
               <Download size={16} />
               Resume
             </Button>
@@ -102,10 +117,9 @@ export default function Navbar() {
                   key={link.name}
                   to={link.path}
                   className={({ isActive }) =>
-                    `py-2 px-4 rounded-md transition-colors font-poppins flex items-center justify-between ${
-                      isActive
-                        ? "bg-purple-500/10 text-purple-400"
-                        : "text-foreground hover:bg-purple-500/5 hover:text-purple-400"
+                    `py-2 px-4 rounded-md transition-colors font-poppins flex items-center justify-between ${isActive
+                      ? "bg-purple-500/10 text-purple-400"
+                      : "text-foreground hover:bg-purple-500/5 hover:text-purple-400"
                     }`
                   }
                 >
@@ -113,7 +127,11 @@ export default function Navbar() {
                   <ChevronRight size={16} className="opacity-70" />
                 </NavLink>
               ))}
-              <Button size="sm" className="w-full gap-2 mt-2 bg-gradient-to-r from-purple-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 font-poppins">
+              <Button
+                size="sm"
+                className="w-full gap-2 mt-2 bg-gradient-to-r from-purple-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 font-poppins"
+                onClick={handleResumeDownload}
+              >
                 <Download size={16} />
                 Resume
               </Button>
