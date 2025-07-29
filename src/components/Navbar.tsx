@@ -37,16 +37,12 @@ export default function Navbar() {
 
   // Handle resume download
   const handleResumeDownload = () => {
-    // Option 1: Direct download from public folder
     const link = document.createElement('a');
-    link.href = 'public/uploads/OussamaCVEnglish.pdf'; // Place your resume.pdf in the public folder
+    link.href = 'public/uploads/OussamaCVEnglish.pdf';
     link.download = 'Oussama_Ouali_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
-    // Optional: Add analytics tracking
-    // gtag('event', 'download', { file_name: 'resume' });
   };
 
   return (
