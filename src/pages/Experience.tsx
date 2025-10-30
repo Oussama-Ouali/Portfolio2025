@@ -11,7 +11,7 @@ const Experience = () => {
   const experiences = [
     {
       company: "Elixiria Tech",
-      position: "CTO",
+      position: "Softawre Engineer",
       period: "Augest 2024 - Present",
       location: "Tanger, Morocco",
       description: [

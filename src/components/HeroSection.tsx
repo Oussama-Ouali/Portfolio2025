@@ -1,7 +1,15 @@
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Download, Send, Star, Github, Linkedin, Twitter } from "lucide-react";
+import {
+  ChevronDown,
+  Download,
+  Send,
+  Star,
+  Github,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import SocialLinks from "./SocialLinks";
 
@@ -13,7 +21,7 @@ export default function HeroSection() {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -150]);
@@ -32,9 +40,9 @@ export default function HeroSection() {
   }, [text, isTypingComplete]);
 
   const handleResumeDownload = () => {
-    const link = document.createElement('a');
-    link.href = 'public/uploads/OussamaCVEnglish.pdf';
-    link.download = 'Oussama_Ouali_Resume.pdf';
+    const link = document.createElement("a");
+    link.href = "public/uploads/OussamaOualiEnglishResume.pdf";
+    link.download = "Oussama_Ouali_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -58,24 +66,27 @@ export default function HeroSection() {
           key={index}
           className="absolute rounded-full"
           style={{
-            width: Math.random() * 3 + 1 + 'px',
-            height: Math.random() * 3 + 1 + 'px',
-            backgroundColor: index % 5 === 0 ? 'rgb(14 165 233 / 0.7)' : 'rgb(255 255 255 / 0.5)'
+            width: Math.random() * 3 + 1 + "px",
+            height: Math.random() * 3 + 1 + "px",
+            backgroundColor:
+              index % 5 === 0
+                ? "rgb(14 165 233 / 0.7)"
+                : "rgb(255 255 255 / 0.5)",
           }}
           initial={{
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
             scale: Math.random() * 1.5 + 0.5,
-            opacity: Math.random() * 0.5 + 0.2
+            opacity: Math.random() * 0.5 + 0.2,
           }}
           animate={{
             y: [null, Math.random() * 20 - 10 + "%"],
-            opacity: [null, Math.random() * 0.7 + 0.1]
+            opacity: [null, Math.random() * 0.7 + 0.1],
           }}
           transition={{
             duration: Math.random() * 20 + 15,
             repeat: Infinity,
-            repeatType: "reverse"
+            repeatType: "reverse",
           }}
         />
       ))}
@@ -106,7 +117,11 @@ export default function HeroSection() {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
               <span className="inline-block bg-gradient-to-r from-white to-sky-200 bg-clip-text text-transparent">
                 {text}
-                <span className={`border-r-2 border-sky-400 ${isTypingComplete ? 'animate-type-cursor' : ''}`} />
+                <span
+                  className={`border-r-2 border-sky-400 ${
+                    isTypingComplete ? "animate-type-cursor" : ""
+                  }`}
+                />
               </span>
             </h1>
 
@@ -121,8 +136,10 @@ export default function HeroSection() {
                 </h2>
 
                 <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-                  A passionate developer with over 2 years of experience in cross-platform mobile applications
-                  and modern web development, focused on creating exceptional user experiences and scalable solutions.
+                  A passionate developer with over 2 years of experience in
+                  cross-platform mobile applications and modern web development,
+                  focused on creating exceptional user experiences and scalable
+                  solutions.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
@@ -130,7 +147,11 @@ export default function HeroSection() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button size="lg" onClick={handleResumeDownload} className="gap-3 bg-gradient-to-r from-sky-600 to-blue-500 hover:from-sky-500 hover:to-blue-400 shadow-lg shadow-sky-500/20 px-6 py-6 text-lg font-medium">
+                    <Button
+                      size="lg"
+                      onClick={handleResumeDownload}
+                      className="gap-3 bg-gradient-to-r from-sky-600 to-blue-500 hover:from-sky-500 hover:to-blue-400 shadow-lg shadow-sky-500/20 px-6 py-6 text-lg font-medium"
+                    >
                       <Download size={20} />
                       Download Resume
                     </Button>
@@ -139,7 +160,12 @@ export default function HeroSection() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button size="lg" variant="outline" className="gap-3 border-sky-500/30 hover:bg-sky-500/10 text-sky-100 px-6 py-6 text-lg font-medium" asChild>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="gap-3 border-sky-500/30 hover:bg-sky-500/10 text-sky-100 px-6 py-6 text-lg font-medium"
+                      asChild
+                    >
                       <Link to="/contact">
                         <Send size={20} />
                         Contact Me
@@ -149,7 +175,9 @@ export default function HeroSection() {
                 </div>
 
                 <div className="mt-12">
-                  <p className="text-sm text-sky-200 mb-3 uppercase tracking-wider font-medium">Connect with me:</p>
+                  <p className="text-sm text-sky-200 mb-3 uppercase tracking-wider font-medium">
+                    Connect with me:
+                  </p>
                   <SocialLinks animate={true} />
                 </div>
               </motion.div>
@@ -169,12 +197,12 @@ export default function HeroSection() {
                 className="absolute inset-0 rounded-full bg-sky-500/20 blur-3xl"
                 animate={{
                   scale: [1, 1.2, 1],
-                  opacity: [0.5, 0.7, 0.5]
+                  opacity: [0.5, 0.7, 0.5],
                 }}
                 transition={{
                   duration: 5,
                   repeat: Infinity,
-                  repeatType: "reverse"
+                  repeatType: "reverse",
                 }}
               />
 
@@ -196,11 +224,15 @@ export default function HeroSection() {
                 className="relative h-full w-full overflow-hidden rounded-full border-2 border-sky-500/50 p-3 bg-gradient-to-br from-sky-900/50 to-slate-900/80 backdrop-blur-sm"
                 whileHover={{
                   boxShadow: "0 0 40px rgba(14, 165, 233, 0.4)",
-                  borderColor: "rgba(14, 165, 233, 0.8)"
+                  borderColor: "rgba(14, 165, 233, 0.8)",
                 }}
               >
                 {/* Avatar component instead of image */}
-                <img className="rounded-full" src="public\uploads\profile.jpg" alt="" />
+                <img
+                  className="rounded-full"
+                  src="public\uploads\profile.jpg"
+                  alt=""
+                />
 
                 {/* Overlay gradient */}
                 <motion.div
@@ -211,7 +243,7 @@ export default function HeroSection() {
                   transition={{
                     duration: 15,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: "linear",
                   }}
                 />
               </motion.div>
@@ -222,8 +254,8 @@ export default function HeroSection() {
                   key={index}
                   className="absolute bg-sky-900/90 text-sky-300 w-8 h-8 rounded-lg flex items-center justify-center text-xs font-mono shadow-lg border border-sky-700/50"
                   style={{
-                    left: `${Math.sin(index * (Math.PI * 2 / 5)) * 50 + 50}%`,
-                    top: `${Math.cos(index * (Math.PI * 2 / 5)) * 50 + 50}%`,
+                    left: `${Math.sin(index * ((Math.PI * 2) / 5)) * 50 + 50}%`,
+                    top: `${Math.cos(index * ((Math.PI * 2) / 5)) * 50 + 50}%`,
                   }}
                   animate={{
                     y: [0, -10, 0],
@@ -251,7 +283,9 @@ export default function HeroSection() {
         transition={{ delay: 1.8, duration: 0.6 }}
         whileHover={{ scale: 1.1 }}
       >
-        <span className="text-sm text-sky-200 mb-2 font-medium tracking-wide">Scroll to explore</span>
+        <span className="text-sm text-sky-200 mb-2 font-medium tracking-wide">
+          Scroll to explore
+        </span>
         <motion.div
           className="p-2 rounded-full bg-sky-500/10 border border-sky-500/20"
           animate={{ y: [0, 5, 0] }}
