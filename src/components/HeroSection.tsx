@@ -55,14 +55,12 @@ export default function HeroSection() {
       ref={ref}
       className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950"
     >
-      {/* Enhanced background elements */}
       <div className="absolute top-0 left-0 right-0 h-full">
         <div className="absolute top-0 left-0 right-0 h-2/3 bg-gradient-to-b from-sky-500/10 to-transparent -z-10" />
         <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-sky-900/5 to-transparent -z-10" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,165,233,0.03),transparent_70%)]" />
       </div>
 
-      {/* Enhanced animated particles/stars */}
       {Array.from({ length: 80 }).map((_, index) => (
         <motion.div
           key={index}
@@ -93,13 +91,11 @@ export default function HeroSection() {
         />
       ))}
 
-      {/* Content with improved spacing and organization */}
       <motion.div
         className="container mx-auto px-4 z-10 pt-16"
         style={{ y, opacity }}
       >
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-          {/* Enhanced Text Content */}
           <motion.div
             className="flex-1 text-center md:text-left"
             initial={{ opacity: 0, y: 20 }}
@@ -186,7 +182,6 @@ export default function HeroSection() {
             )}
           </motion.div>
 
-          {/* Enhanced Profile/Avatar Section */}
           <motion.div
             className="flex-1 flex justify-center md:justify-end"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -194,7 +189,6 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.4 }}
           >
             <div className="relative w-72 h-72 md:w-[550px] md:h-[550px]">
-              {/* Glowing background effect */}
               <motion.div
                 className="absolute inset-0 rounded-full bg-sky-500/20 blur-3xl"
                 animate={{
@@ -208,7 +202,6 @@ export default function HeroSection() {
                 }}
               />
 
-              {/* Rotating rings */}
               <motion.div
                 className="absolute inset-4 rounded-full border-2 border-dashed border-sky-400/30"
                 animate={{ rotate: 360 }}
@@ -221,7 +214,6 @@ export default function HeroSection() {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
 
-              {/* Avatar container */}
               <motion.div
                 className="relative h-full w-full overflow-hidden rounded-full border-2 border-sky-500/50 p-3 bg-gradient-to-br from-sky-900/50 to-slate-900/80 backdrop-blur-sm"
                 whileHover={{
@@ -229,14 +221,12 @@ export default function HeroSection() {
                   borderColor: "rgba(14, 165, 233, 0.8)",
                 }}
               >
-                {/* Avatar component instead of image */}
                 <img
                   className="rounded-full"
                   src="/Portfolio2025/uploads/profile.jpg"
                   alt="Oussama Ouali"
                 />
 
-                {/* Overlay gradient */}
                 <motion.div
                   className="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500/10 via-transparent to-blue-500/10"
                   animate={{
@@ -250,7 +240,6 @@ export default function HeroSection() {
                 />
               </motion.div>
 
-              {/* Floating tech icons around avatar */}
               {["</>", "{}", "[]", "##", "//"].map((icon, index) => (
                 <motion.div
                   key={index}
@@ -277,7 +266,6 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Enhanced scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
         initial={{ opacity: 0 }}

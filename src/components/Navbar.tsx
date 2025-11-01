@@ -30,16 +30,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
 
-  // Handle resume download
   const handleResumeDownload = () => {
-    const link = document.createElement('a');
-    link.href = 'public/uploads/OussamaCVEnglish.pdf';
-    link.download = 'Oussama_Ouali_Resume.pdf';
+    const link = document.createElement("a");
+    link.href = "public/uploads/OussamaCVEnglish.pdf";
+    link.download = "Oussama_Ouali_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -47,14 +45,14 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
-        ? "bg-background/90 backdrop-blur-md py-2 shadow-md"
-        : "bg-transparent py-4"
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/90 backdrop-blur-md py-2 shadow-md"
+          : "bg-transparent py-4"
+      }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
-          {/* Logo */}
           <NavLink
             to="/"
             className="text-xl font-bold font-playfair text-gradient relative group"
@@ -63,14 +61,15 @@ export default function Navbar() {
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-sky-400 transition-all duration-300 group-hover:w-full"></span>
           </NavLink>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <NavLink
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) =>
-                  `nav-link font-poppins text-sm font-medium ${isActive ? "active" : ""}`
+                  `nav-link font-poppins text-sm font-medium ${
+                    isActive ? "active" : ""
+                  }`
                 }
               >
                 {link.name}
@@ -86,7 +85,6 @@ export default function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
           <button
             className="md:hidden text-foreground hover:text-purple-400 transition-colors focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -97,7 +95,6 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -113,9 +110,10 @@ export default function Navbar() {
                   key={link.name}
                   to={link.path}
                   className={({ isActive }) =>
-                    `py-2 px-4 rounded-md transition-colors font-poppins flex items-center justify-between ${isActive
-                      ? "bg-purple-500/10 text-purple-400"
-                      : "text-foreground hover:bg-purple-500/5 hover:text-purple-400"
+                    `py-2 px-4 rounded-md transition-colors font-poppins flex items-center justify-between ${
+                      isActive
+                        ? "bg-purple-500/10 text-purple-400"
+                        : "text-foreground hover:bg-purple-500/5 hover:text-purple-400"
                     }`
                   }
                 >

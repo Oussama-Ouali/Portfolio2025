@@ -60,7 +60,6 @@ export default function BlurredBlobs() {
     offset: ["start start", "end end"]
   });
   
-  // Enhanced scroll transformations
   const y1 = useTransform(scrollYProgress, [0, 0.5, 1], [0, -200, -400]);
   const y2 = useTransform(scrollYProgress, [0, 0.5, 1], [0, 250, 500]);
   const y3 = useTransform(scrollYProgress, [0, 0.5, 1], [0, -150, -300]);
@@ -83,7 +82,6 @@ export default function BlurredBlobs() {
   return (
     <AnimatePresence>
       <div ref={containerRef} className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        {/* Static animated blobs with enhanced effects */}
         <Blob 
           color="linear-gradient(135deg, rgba(56, 189, 248, 0.6) 0%, rgba(14, 165, 233, 0.4) 100%)" 
           size={800} 
@@ -126,7 +124,6 @@ export default function BlurredBlobs() {
           intensity={1.15}
         />
         
-        {/* Scroll animated blobs with enhanced effects */}
         <motion.div
           className="absolute rounded-full"
           style={{

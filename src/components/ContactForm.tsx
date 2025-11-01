@@ -51,7 +51,6 @@ export default function ContactForm() {
   function onSubmit(data: FormValues) {
     setIsSubmitting(true);
     
-    // Simulate API call
     setTimeout(() => {
       console.log(data);
       toast.success("Your message has been sent successfully!");
