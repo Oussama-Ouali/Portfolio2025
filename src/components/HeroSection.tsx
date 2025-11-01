@@ -41,12 +41,14 @@ export default function HeroSection() {
 
   const handleResumeDownload = () => {
     const link = document.createElement("a");
-    link.href = "public/uploads/OussamaOualiEnglishResume.pdf";
+    link.href = "/Portfolio2025/uploads/OussamaOualiEnglishResume.pdf";
     link.download = "Oussama_Ouali_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
+
+  console.log("meta.env", import.meta.env.PROD);
 
   return (
     <section
@@ -230,8 +232,8 @@ export default function HeroSection() {
                 {/* Avatar component instead of image */}
                 <img
                   className="rounded-full"
-                  src="public\uploads\profile.jpg"
-                  alt=""
+                  src="/Portfolio2025/uploads/profile.jpg"
+                  alt="Oussama Ouali"
                 />
 
                 {/* Overlay gradient */}

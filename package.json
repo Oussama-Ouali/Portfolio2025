@@ -1,7 +1,7 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "oussama_ouali_portfolio2025",
   "private": true,
-  "homepage": "https://github.com/Oussama-Ouali/Portfolio2025.git",
+  "homepage": "https://Oussama-Ouali.github.io/Portfolio2025",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
